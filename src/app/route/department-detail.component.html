@@ -1,0 +1,9 @@
+<app-departments></app-departments>
+
+<div class="well" style="width:350px;">
+	<h4>Selected department is : <strong>{{departmentId}} - {{departmentName}}</strong> </h4><br>
+	<button class="btn btn-sm btn-primary pull-left" (click)="goPrevious()"> &lt; Previous </button>
+	<button class="btn btn-sm btn-primary pull-right" (click)="goNext()"> Next &gt; </button>
+	<div class="clearfix"></div> <br>
+	<button class="btn btn-sm btn-primary" (click)="goToDepartments()">Back</button>
+</div>

@@ -1,0 +1,47 @@
+<!-- Below html is to find certain simple words --> 
+<div class="panel panel-default" style="width:48%;float:left;">
+	<div class="panel-body">
+		<h3>Simple Filter</h3><br>
+		<div class="form-group">
+			<label>Filter</label>
+			<input type="text" name="filter" id="filter" class="form-control" placeholder="Search to type"  [(ngModel)]="searchText">
+		</div>
+		<ul style="padding-left:20px;">
+			<li *ngFor="let simple of simples | filter: searchText"> {{simple}} </li>
+		</ul>
+	</div>
+</div>
+
+<!-- Below html is to find entire array using only from a name (cant filter by age or number) --> 
+
+<div class="panel panel-default" style="width:48%;float:right;">
+	<div class="panel-body">
+		<h3>Medium Filter</h3><br>
+		<div class="form-group">
+			<label>Filter</label>
+			<input type="text" name="filter" id="filter" class="form-control" placeholder="Search to type"  [(ngModel)]="filterText">
+		</div>
+		<ul style="padding-left:20px;">
+			<li *ngFor="let list of lists | filterMedium: filterText"> {{list.name}} - {{list.age}} </li>
+		</ul>
+	</div>
+</div>
+
+<div class="clearfix"></div>
+
+<br>
+
+<!-- Below html is to find entire array using from any key of a array Ex: name, age and city --> 
+
+<div class="panel panel-default">
+	<div class="panel-body">
+		<h3>Advanced Filter</h3><br>
+		<div class="form-group">
+			<label>Filter</label>
+			<input type="text" name="filter" id="filter" class="form-control" placeholder="Search to type"  [(ngModel)]="findTextOrAgeOrCity">
+		</div>
+		<ul style="padding-left:20px;">
+			<li *ngFor="let list of lists | filterAdvanced: findTextOrAgeOrCity : searchableList"> {{list.name}} - {{list.age}} - {{list.city}} </li>
+		</ul>
+	</div>
+</div>

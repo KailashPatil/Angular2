@@ -1,0 +1,48 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h3>Sorting in Table</h3>
+    <br><br>
+    <div class="well m-t" style="width:auto;">
+      <table class="table table-striped">
+        <thead>
+          <th id="number">
+          	Number
+            <a (click)="sortItems('number', 'ASC')">
+              <button class="btn btn-xs"><i class="fas fa-angle-up"></i></button>
+            </a>
+            <a (click)="sortItems('number', 'DESC')">
+              <button class="btn btn-xs"><i class="fas fa-angle-down"></i></button>
+            </a>
+          </th>
+          <th id="name">
+          	Name
+            <a (click)="sortItems('name', 'ASC')">
+              <button class="btn btn-xs"><i class="fas fa-angle-up"></i></button>
+            </a>
+            <a (click)="sortItems('name', 'DESC')">
+              <button class="btn btn-xs"><i class="fas fa-angle-down"></i></button>
+            </a>
+          </th>
+          <th id="country">
+          	Country / City
+            <a (click)="sortItems('country', 'ASC')">
+              <button class="btn btn-xs"><i class="fas fa-angle-up"></i></button>
+            </a>
+            <a (click)="sortItems('country', 'DESC')">
+              <button class="btn btn-xs"><i class="fas fa-angle-down"></i></button>
+            </a>
+          </th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of items">
+          	<td>{{item.number}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.country}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<br>
+<br>

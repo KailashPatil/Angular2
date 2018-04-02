@@ -1,0 +1,35 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h3>Sorting in Table</h3>
+    <br>
+    <button class="btn btn-primary" (click)="toggle()">Table</button>
+    <br><br>
+    <div class="well m-t" style="width:auto;" *ngIf="tableSort">
+      <table class="table table-striped sort">
+        <thead>
+          <th id="name">Name
+            <a *ngIf="nameAsc" (click)="sortColumn('name', 'asc')">^</a>
+            <a *ngIf="nameDesc" (click)="sortColumn('name', 'desc')">v</a>
+          </th>
+          <th id="age">Age
+            <a *ngIf="ageAsc" (click)="sortColumn('age', 'asc')">^</a>
+            <a *ngIf="ageDesc" (click)="sortColumn('age', 'desc')">v</a>
+          </th>
+          <th id="city">City
+            <a *ngIf="cityAsc" (click)="sortColumn('city', 'asc')">^</a>
+            <a *ngIf="cityDesc" (click)="sortColumn('city', 'desc')">v</a>
+          </th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let list of lists">
+            <td>{{list.name}}</td>
+            <td>{{list.age}}</td>
+            <td>{{list.city}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<br>
+<br>

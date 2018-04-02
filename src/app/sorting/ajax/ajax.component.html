@@ -1,0 +1,33 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h3>Sorting in Table</h3>
+    <br>
+    <br>
+    <div class="well m-t" style="width:auto;">
+      <table class="table table-striped ajax-sort">
+        <thead>
+          <th id="sortNames" data-sort-var="name" data-sort-order="desc">
+            <a>
+						Name
+						</a>
+          </th>
+          <th id="sortAges" data-sort-var="age" data-sort-order="desc">
+            Age
+          </th>
+          <th id="sortCities" data-sort-var="city" data-sort-order="desc">
+            City
+          </th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let list of lists">
+            <td>{{list.name}}</td>
+            <td>{{list.age}}</td>
+            <td>{{list.city}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<br>
+<br>

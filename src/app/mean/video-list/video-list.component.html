@@ -1,0 +1,3 @@
+<ul class="nav nav-pills nav-stacked video-lists">
+	<li *ngFor="let video of videos" (click)="onSelect(video)" id="video-{{video._id}}" [class.active]="this.activeVideo == video" routerLink="{{video.title}}"><a>{{video.title}}</a></li>
+</ul>

@@ -1,0 +1,51 @@
+
+<!-- To use 'Modern Driven Form (MDF) with formBuilder' we need to import 'ReactiveFormsModule' in app.module.ts and declare it in imports -->
+
+<div class="well" style="width:auto;">
+	<h4>Modern Driven Form (MDF) with FormBuilder</h4><br>
+
+	<!-- Binding form with a model - [formGroup]="userForm"  userForm is used in its .ts file-->
+	<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+		<div class="form-group">
+			<label>Name</label>
+			<input type="text" name="name" class="form-control" formControlName="name">
+
+			<div *ngIf="userForm.controls['name'].hasError('required')" class="alert alert-danger">
+				Please enter Name
+			</div>
+			<div *ngIf="userForm.controls['name'].hasError('minlength')" class="alert alert-danger">
+				Name should have atleast 2 characters
+			</div>
+
+		</div>
+		<div class="form-group">
+			<label>Email</label>
+			<input type="text" name="email" class="form-control" formControlName="email">
+		</div>
+		<div formGroupName="address">
+			<div class="form-group">
+				<label>Street</label>
+				<input type="text" name="street" class="form-control" formControlName="street">
+			</div>
+			<div class="form-group">
+				<label>City</label>
+				<input type="text" name="city" class="form-control" formControlName="city">
+			</div>
+			<div class="form-group">
+				<label>Postal Code</label>
+				<input type="text" name="postalcode" class="form-control" formControlName="postalcode">
+
+				<div *ngIf="userForm.controls['address'].controls['postalcode'].hasError('required')" class="alert alert-danger">
+					Please enter Postal code
+				</div>
+				<div *ngIf="userForm.controls['address'].controls['postalcode'].hasError('pattern')" class="alert alert-danger">
+					Postal code should have 5 digit numbers
+				</div>
+
+			</div>
+		</div>
+		<button type="submit" [disabled]="!userForm.valid" class="btn btn-md btn-primary pull-right">Submit</button>
+	</form>
+
+	<div class="clearfix"></div>
+</div>

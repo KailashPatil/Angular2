@@ -1,0 +1,39 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h3>Search in Table</h3>
+    <br>
+    <br>
+    <form>
+    	<div class="form-group">
+    		<input type="text" name="search" class="form-control" #searchText value="" style="width: 25%;margin-right:10px;float: left;">
+    		<button class="btn btn-primary" [routerLink]="['/search']" [queryParams]="{ q: searchText.value }" (click)="search(searchText.value)">Search</button>
+    	</div>
+    </form>
+    <br>
+    <br>
+    <div class="well m-t" style="width:auto;">
+      <table class="table table-striped">
+        <thead>
+          <th> Name </th>
+          <th> Age </th>
+          <th> City </th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let list of lists">
+            <td>{{list.name}}</td>
+            <td>{{list.age}}</td>
+            <td>{{list.city}}</td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <h4 *ngIf="notify" style="color:#f00;">Not found.</h4>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<a class="btn btn-primary" routerLink="/search-form">Search by submitting form</a>

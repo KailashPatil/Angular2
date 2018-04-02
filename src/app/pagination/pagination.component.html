@@ -1,0 +1,27 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h3>Pagination</h3>
+    <br>
+    <br>
+    <div class="well m-t" style="width:auto;">
+      <table class="table table-striped">
+        <thead>
+          <th> Name </th>
+          <th> Age </th>
+          <th> City </th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let page of paginations | paginate: {itemsPerPage:3, currentPage: p}">
+            <td>{{page.number}}</td>
+            <td>{{page.name}}</td>
+            <td>{{page.country}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls (pageChange)="p=$event"></pagination-controls>
+
+      <div class="clearfix"></div>
+
+    </div>
+  </div>
+</div>

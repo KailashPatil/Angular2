@@ -1,0 +1,17 @@
+{
+	"web_app":{
+		"port":"3000",
+		"url":"http://localhost:4200"
+	},
+	"email":{
+		"from":"test@noreply.com",
+		"admins":"kailash.p@openly.co, navya.k@openly.co",
+		"mailgun":{
+			"api_key":"key-6dt528vv4rg0q2y4893g-t5cjus52183",
+			"domain":"openly.co"
+		}
+
+	},
+	"salt":"kailash123"
+
+}

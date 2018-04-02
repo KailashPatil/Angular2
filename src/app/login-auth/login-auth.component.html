@@ -1,0 +1,61 @@
+<div *ngIf="message" class="alert alert-success" style="position:absolute;top:20px;right:20px;width:350px;">
+	{{message}}
+	<span (click)="closeNotification()" style="float:right;cursor:pointer;">X</span>
+</div>
+
+
+<div class="panel panel-default" style="width:400px;margin: 65px auto;background-color:#f8f8f8;">
+	<div class="panel-body">
+
+		<div class="alert alert-danger notification" *ngIf="notification">
+			{{errMsg}}
+			<span (click)="close()">X</span>
+		</div>
+
+		<h3 style="width:100%;text-align:center;"><strong>Login</strong></h3><br>
+		<p *ngIf="invalidData" style="color:#f00;text-align:center;padding:5px 0px;"><strong>Invalid credentials</strong></p>
+		<form #userForm="ngForm" (ngSubmit)="onLoginSubmit(userForm.value)" novalidate>
+
+			<div class="form-group">
+				<label>Email</label>
+				<input type="text" name="email" class="form-control" required pattern="\S+@\S+" #email="ngModel" ngModel>
+
+				<div *ngIf="email.errors && (email.touched || email.dirty)" class="alert alert-danger">
+					<div [hidden]="!email.errors.required">
+						Please enter Email
+					</div>
+					<div [hidden]="!email.errors.pattern">
+						Email should be in a proper format
+					</div>
+				</div>
+
+			</div>
+			<div class="form-group">
+				<label>Password</label>
+				<input type="password" name="password" class="form-control" required minlength="5" #password="ngModel" ngModel>
+
+				<div *ngIf="password.errors && (password.touched || password.dirty)" class="alert alert-danger">
+					<div [hidden]="!password.errors.required">
+						Please enter Password
+					</div>
+					<div [hidden]="!password.errors.minlength">
+						Password should contain atleast 5 charactars
+					</div>
+				</div>
+
+			</div>
+			<a (click)="forgotPassword()" style="margin-bottom:30px;display:block;cursor:pointer;">Forgot password?</a>
+			<div class="clearfix"></div>
+
+			<button type="button" class="btn btn-md btn-primary pull-left" routerLink="/signup">SignUp</button>
+
+			<button type="submit" [disabled]="!userForm.valid" class="btn btn-md btn-success pull-right">Login</button>
+		</form>
+		<div class="clearfix"></div>
+	</div>
+</div>
+
+
+<ul class="nav nav-pills nav-stacked video-lists">
+	<li *ngFor="let user of users" style="float:left;width:250px;background-color:#fefefe;display:inline-block;"><a>{{user.email}} - {{user.password}}</a></li>
+</ul>

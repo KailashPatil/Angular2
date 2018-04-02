@@ -1,0 +1,50 @@
+
+<app-mean></app-mean>
+<div class="clearfix"></div>
+<br><br>
+
+<div class="col-md-9">
+
+	<h4 style="margin-top:20px;" *ngIf="videoTabContent">Click on the videos lists to see the detail.</h4>
+
+	<div class="well" *ngIf="newVideoForm" style="width:auto;">
+		<form #form="ngForm" (ngSubmit)="onSubmittingNewVideo(form.value)">
+			<div class="form-group">
+				<label>Title</label>
+				<input type="text" name="title" class="form-control" required ngModel>
+			</div>
+			<div class="form-group">
+				<label>URL</label>
+				<input type="text" name="url" class="form-control" required ngModel>
+			</div>
+			<div class="form-group">
+				<label>description</label>
+				<input type="text" name="description" class="form-control" ngModel>
+			</div><br>
+			<button type="submit" class="btn btn-primary pull-right">Save</button>
+			<button type="button" class="btn btn-default pull-right" (click)="cancel()">Cancel</button>
+		</form>
+		<div class="clearfix"></div>
+	</div>
+
+	<video-detail 
+			[video]="selectedVideo" 
+			*ngIf="selectedVideo" 
+			(deleteVideoEvent)="onDeletingVideoEvent($event)"
+			(updateVideoEvent)="onUpdatedVideoEvent($event)">
+	</video-detail>
+
+</div>
+
+
+<div class="col-md-3">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<button class="btn btn-primary" (click)="addNewVideoButton()" style="margin-bottom:20px;"> + Add Video</button> <br>
+
+			<video-list [videos]="allvideos" (SelectedVideo)="onSelectVideo($event)"></video-list>
+
+		</div>
+	</div>
+</div>
+ 

@@ -1,0 +1,29 @@
+<!-- <div class="well">
+	<p>{{video.title}}</p>
+	<p>{{video.url}}</p>
+	<p>{{video.description}}</p>
+</div>
+<br> -->
+<div class="well" style="width:auto;">
+
+	<iframe [src]="video.url | safeurl" width="100%" height="300"></iframe>
+
+	<form>
+		<div class="form-group" *ngIf="editableTitle">
+			<label>Title</label>
+			<input type="text" name="title" class="form-control" [(ngModel)]="video.title">
+		</div>
+		<h3 (click)="clickToEdit()" *ngIf="canBeEditable" style="padding-bottom:20px;">{{video.title}}</h3>
+		<div class="form-group">
+			<label>URL</label>
+			<input type="text" name="url" class="form-control" [(ngModel)]="video.url">
+		</div>
+		<div class="form-group">
+			<label>Description</label>
+			<input type="text" name="description" class="form-control" [(ngModel)]="video.description">
+		</div> <br>
+		<button type="button" class="btn btn-primary pull-right" (click)="updateVideo()">Update</button>
+		<button type="button" class="btn btn-danger pull-right" (click)="deleteVideo()">Delete</button>
+	</form>
+	<div class="clearfix"></div>
+</div>

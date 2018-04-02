@@ -1,0 +1,19 @@
+<h3>Input Output</h3>
+
+<!-- Here 'parent' means one.component.ts and 'child' means two.component.ts -->
+
+<br>
+
+<div class="well">
+	<h4>Parent box</h4>
+	<p>Enter parent value : 
+		<input type="text" name="" #parentText (keyup)="0">
+	</p>
+	<p>Child value is : <strong>{{childValue}}</strong></p>
+</div>
+
+<app-two (childEvent)="childValue=$event" [parentValue]="parentText.value"></app-two>
+
+<br><br>
+
+<button class="btn btn-md btn-primary" (click)="goToPipes()">Go to Pipes section</button>

@@ -1,0 +1,39 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h3>Search in Table by submitting Form</h3>
+    <br>
+    <br>
+    <form #searchForm="ngForm" (ngSubmit)="onSearchForm(searchForm.value)">
+    	<div class="form-group">
+    		<input type="text" name="search_value" class="form-control" #name ngModel style="width: 25%;margin-right:10px;float: left;">
+    		<button type="submit" class="btn btn-primary pull-left" [routerLink]="['/search-form']" [queryParams]="{ q: searchForm.value }">Search</button>
+
+    		<p class="pull-left" *ngIf="message" [class.hide]="name.value.length > 0" style="color:#f00;padding: 7px 15px;margin-bottom:0px;">Please enter Name/Age/City to search</p>
+    	</div>
+    </form>
+    	<div class="clearfix"></div>
+    <br>
+    <br>
+    <div class="well m-t" style="width:auto;">
+      <table class="table table-striped">
+        <thead>
+          <th> Name </th>
+          <th> Age </th>
+          <th> City </th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let list of lists">
+            <td>{{list.name}}</td>
+            <td>{{list.age}}</td>
+            <td>{{list.city}}</td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <h4 *ngIf="notify" style="color:#f00;">Not found.</h4>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

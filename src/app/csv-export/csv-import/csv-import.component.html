@@ -1,0 +1,41 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h3 class="pull-left">CSV Import</h3>
+    <input type="file"
+		 #fileImportInput
+		 name="File Upload"
+		 id="txtFileUpload"
+		 class="btn btn-primary pull-right"
+		 (change)="fileChangeListener($event.target.files)" 
+		 accept=".csv"
+     style="margin-top:18px;padding:8px 12px;width:200px;"/>
+    <div class="clearfix"></div>
+    <div *ngIf="status == 200" class="alert alert-info" style="margin-top:25px;">
+      {{status}}
+    </div>
+    <div *ngIf="status!= 200" class="alert alert-error" style="margin-top:25px;">
+      {{status}}
+    </div>
+    <div class="well m-t" style="width:auto;" *ngIf="csvImportLists">
+      <table class="table table-striped">
+        <thead>
+          <th> Jersey </th>
+          <th> Name </th>
+          <th> Country </th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let csv of csvLists">
+            <td>{{csv.jersey}}</td>
+            <td>{{csv.name}}</td>
+            <td>{{csv.country}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+
+
+
+

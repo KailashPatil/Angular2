@@ -1,0 +1,41 @@
+<div class="panel panel-default" style="width:400px;margin: 75px auto;background-color:#f8f8f8;">
+	<div class="panel-body">
+		<h3 style="width:100%;text-align:center;"><strong>Login</strong></h3><br>
+
+		<p *ngIf="invalidData">Invalid credentials</p>
+
+		<form [formGroup]="userForm" (ngSubmit)="formSubmit(loginForm.value)">
+
+			<div class="form-group">
+				<label>Username</label>
+				<input type="text" name="username" class="form-control" [(ngModel)]="data.username" formControlName="username">
+
+				<div *ngIf="userForm.controls['username'].hasError('required')" class="alert alert-danger">
+					Please enter Name.
+				</div>
+
+				<div *ngIf="userForm.controls['username'].hasError('minlength')" class="alert alert-danger">
+					Name should have atleast 2 characters.
+				</div>
+
+			</div>
+
+			<div class="form-group">
+				<label>Password</label>
+				<input type="password" name="password" class="form-control" [(ngModel)]="data.password"  formControlName="password">
+
+				<div *ngIf="userForm.controls['password'].hasError('required')" class="alert alert-danger">
+					Please enter Password.
+				</div>
+
+				<div *ngIf="userForm.controls['password'].hasError('minlength')" class="alert alert-danger">
+					Password should have atleast 6 characters.
+				</div>
+			</div><br>
+
+			<button type="submit" class="btn btn-md btn-primary pull-right" [disabled]="!userForm.valid" style="margin-left:10px;">Login</button>
+			<!-- <button (click)="reset()" class="btn btn-default pull-right">Reset</button> -->
+		</form>
+
+	</div>
+</div>

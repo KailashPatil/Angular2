@@ -1,0 +1,27 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		<h3>Sorting Lists</h3><br>
+		<div class="form-group pull-left" style="margin-right:30px;">
+			<label>Sort by</label>
+			<select class="form-control" name="sort-ield" id="sort-ield" [(ngModel)]="sortField" style="width:250px;">
+				<option *ngFor="let field of sortFields" [value]="field"> {{ field }} </option>
+			</select>
+		</div>
+		<div class="pill-left" style="margin-top:25px;">
+			<button class="btn btn-default" [class.btn-primary]="sortDirection == 'asc'" (click)="sortDirection = 'asc'">Asc</button>
+			<button class="btn btn-default" [class.btn-primary]="sortDirection == 'desc'" (click)="sortDirection = 'desc'">Desc</button>
+		</div>
+		<div class="clearfix"></div>
+		<ul class="well sort">
+			<li *ngFor="let list of lists | sort: [sortField, sortDirection]"> <span>{{list.name}}</span>  <span>{{list.age}}</span>  <span>{{list.city}}</span> </li>
+		</ul>
+		<div class="clearfix"></div>
+	</div>
+</div>
+<br><br>
+
+<a class="btn btn-primary" routerLink="/sorting-in-table">Let's check SORTing in Table</a>
+<br><br>
+<a class="btn btn-primary" routerLink="/sorting-ajax">Let's check SORTing in Table to/from server</a>
+<br><br>
+<a class="btn btn-primary" routerLink="/sort-using-ajax">SORT using AJAX</a>

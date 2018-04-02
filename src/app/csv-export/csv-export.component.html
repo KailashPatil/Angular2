@@ -1,0 +1,32 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h3 class="pull-left">CSV Export</h3>
+    <button type="button" (click)="exportCsv()" class="btn btn-primary pull-right" style="margin-top:20px;">Export CSV</button>
+    <div class="clearfix"></div>
+    <br>
+    <br>
+    <div class="well m-t" style="width:auto;">
+      <table class="table table-striped">
+        <thead>
+          <th> Number </th>
+          <th> Name </th>
+          <th> Country </th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let csv of csvFile">
+            <td>{{csv.number}}</td>
+            <td>{{csv.name}}</td>
+            <td>{{csv.country}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="clearfix"></div>
+
+    </div>
+  </div>
+</div>
+<a href="#" class="btn btn-primary" routerLink="/csv-import">Import CSV</a>
+
+
+

@@ -1,0 +1,8 @@
+<h3 class="page-header">Router Application</h3><br>
+
+<button class="btn btn-primary btn-md" (click)="showDepartments()">Departments</button><br>
+<ul class="list-group mt" style="width:200px;margin-right:25px;" *ngIf="departmentLists">
+  <li class="list-group-item" *ngFor="let department of departments" (click)="onSelect(department)" [class.active]="isSelected(department)"><span class="badge pull-left"> {{department.id}} </span> &nbsp;&nbsp;&nbsp; {{department.name}}</li>
+</ul>
+<br>
+<!-- <h4 *ngIf="showSelectedDepartment">Selected department is : <strong>{{departmentId}}</strong> </h4> -->

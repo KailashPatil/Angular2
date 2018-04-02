@@ -1,0 +1,121 @@
+<h3 class="page-header"><strong>CRUD operations</strong></h3>
+<br>
+<!-- Notification -->
+<div class="alert alert-success update" role="alert">
+  <p class="pull-left">{{updateMessage}}</p>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<!-- End of Notification -->
+<!-- Notification -->
+<div class="alert alert-success add" role="alert">
+  <p class="pull-left">{{addMessage}}</p>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<!-- End of Notification -->
+<!-- Notification -->
+<div class="alert alert-danger delete" role="alert">
+  <p class="pull-left">{{deleteMessage}}</p>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<!-- End of Notification -->
+
+<!-- Add Employee -->
+<form class="well auto" *ngIf="openEmployeeForm">
+	<h4>Add Employee</h4> <br>
+  <div class="form-group row">
+    <label for="name" class="col-sm-2 col-form-label">Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="name" placeholder="Name" name="name" [(ngModel)]="model.name">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="designation" class="col-sm-2 col-form-label">Designation</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="designation" placeholder="Designation" name="name" [(ngModel)]="model.designation">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="company" class="col-sm-2 col-form-label">Company</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="company" placeholder="Company" name="name" [(ngModel)]="model.company">
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-12">
+      <button type="submit" class="btn btn-primary pull-right" (click)="addEmployee()">Add</button>
+      <button type="button" class="btn btn-default pull-right" (click)="openEmployeeForm = false">Cancel</button>
+    </div>
+  </div>
+</form>
+
+<br>
+<!-- End of Add Employee -->
+
+<!-- Read and Delete Employee -->
+<div class="panel panel-default">
+	<div class="panel-body">
+		<h4 class="pull-left">Read and Delete Employee</h4>
+		<a class="btn btn-primary pull-right" (click)="openEmployeeForm = true">Add Employee</a>
+		<div class="clearfix"></div>
+		<table class="table table-striped mt">
+		  <thead>
+		    <tr>
+		      <th scope="col">Name</th>
+		      <th scope="col">Designation</th>
+		      <th scope="col">Comapny</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr *ngFor="let employee of employees; let i=index ">
+		      <td>{{employee.name}}</td>
+		      <td>{{employee.designation}}</td>
+		      <td>{{employee.company}}</td>
+		      <td>
+		      	<a class="btn btn-primary" (click)="editEmployee(i)" [class.red]="selectedEmployee == employee">Edit</a>
+		      	<a class="btn btn-danger" id="{{employee.name}}{{i}}"(click)="deleteEmployee(i)">Delete</a>
+		      </td>
+		    </tr>
+		  </tbody>
+		</table>
+	</div>
+</div>
+
+<br>
+<!-- End of Read and Delete Employee -->
+
+<!-- Update selected Employee -->
+<form class="well auto" *ngIf="updateEmployeeForm">
+	<h4>Update <strong>{{selectedEmployee.name}}</strong> employee data</h4> <br>
+  <div class="form-group row">
+    <label for="name" class="col-sm-2 col-form-label">Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="name" placeholder="Name" name="name" [(ngModel)]="selectedEmployee.name">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="designation" class="col-sm-2 col-form-label">Designation</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="designation" placeholder="Designation" name="designation" [(ngModel)]="selectedEmployee.designation">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="company" class="col-sm-2 col-form-label">Company</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="company" placeholder="Company" name="company" [(ngModel)]="selectedEmployee.company">
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-12">
+      <button type="submit" class="btn btn-primary pull-right" (click)="updateEmployee()">Update</button>
+      <button type="button" class="btn btn-default pull-right" (click)="updateEmployeeForm = false">Cancel</button>
+    </div>
+  </div>
+</form>
+<!-- End of Update selected Employee -->
+

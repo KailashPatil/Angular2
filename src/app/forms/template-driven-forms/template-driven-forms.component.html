@@ -1,0 +1,49 @@
+
+<!-- To use 'Template Driven Form (TDF)' we need to import 'FormsModule' in app.module.ts and declare it in imports -->
+
+<div class="well" style="width:auto;">
+	<h4>Template Driven Form (TDF)</h4><br>
+	<form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)" novalidate>
+		<div class="form-group">
+			<label>Name</label>
+			<!-- [ngModel]="myName" is used to prefill input text   -->
+			<input type="text" name="name" class="form-control" required minlength="2" #name="ngModel" ngModel>
+			<div *ngIf="name.errors && (name.touched || name.dirty)" class="alert alert-danger">
+				<div [hidden]="!name.errors.required">
+					Please enter Name
+				</div>
+				<div [hidden]="!name.errors.minlength">
+					Name should contain atleast 2 charactars
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label>Email</label>
+			<input type="text" name="email" class="form-control" required #email ngModel>
+		</div>
+		<div ngModelGroup="address">
+			<div class="form-group">
+				<label>Street</label>
+				<input type="text" name="street" class="form-control" required #street ngModel>
+			</div>
+			<div class="form-group">
+				<label>City</label>
+				<input type="text" name="city" class="form-control" required #city ngModel>
+			</div>
+			<div class="form-group">
+				<label>Postal Code</label>
+				<input type="text" name="postalcode" class="form-control" required pattern="^[1-9][0-9]{4}$" #postalcode="ngModel" ngModel>
+				<div *ngIf="postalcode.errors && (postalcode.touched || postalcode.dirty)" class="alert alert-danger">
+					<div [hidden]="!postalcode.errors.required">
+						Please enter Postal Code
+					</div>
+					<div [hidden]="!postalcode.errors.pattern">
+						Postal Code should have 5 digit numbers
+					</div>
+				</div>
+			</div>
+		</div>
+		<button type="submit" [disabled]="!userForm.form.valid" class="btn btn-md btn-primary pull-right">Submit</button>
+	</form>
+	<div class="clearfix"></div>
+</div>

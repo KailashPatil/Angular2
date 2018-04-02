@@ -1,0 +1,64 @@
+
+<!-- <div class="well">
+	<ul class="nav nav-tabs" role="tablist">
+	    <li routerLinkActive="active" (click)="onClickTab1()"><a routerLink="/second-tab1">Tab1</a></li>
+	    <li routerLinkActive="active" (click)="onClickTab2()"><a routerLink="/second-tab2">Tab2</a></li>
+	  </ul>
+
+	<div class="tab-content" style="margin:30px;">
+		<second-tab1></second-tab1>
+		<second-tab2></second-tab2>
+	</div>
+</div> -->
+
+<ul class="world">
+	<li *ngIf="countries.length == 0">All Country lists has been deleted.</li>
+	<li *ngFor="let country of countries; let i=index " id="country_{{country.team}}" (click)="onClickingCountry(country)" [class.red]="selectedCountry == country">{{country.team}}</li>
+</ul>
+<div class="well" *ngIf="selectedCountry">
+	<form>
+		<div class="form-group">
+			<label>Team</label>
+			<input type="text" name="team" [(ngModel)]="selectedCountry.team">
+		</div>
+		<div class="form-group">
+			<label>Sports</label>
+			<input type="text" name="sports" [(ngModel)]="selectedCountry.sports">
+		</div>
+		<div class="form-group">
+			<label>Color</label>
+			<input type="text" name="color" [(ngModel)]="selectedCountry.color">
+		</div>
+		<div class="form-group">
+			<label>City</label>
+			<input type="text" name="city" [(ngModel)]="selectedCountry.city">
+		</div>
+		<br>
+		<input type="button" class="btn btn-md btn-primary pull-right" name="" value="Add" (click)="openForm()">
+		<input type="button" class="btn btn-md btn-danger pull-right" name="" value="Delete" (click)="deleteCountryFromList(selectedCountry)">
+		<div class="clearfix"></div>
+	</form>
+</div>
+<div class="well" *ngIf="addingNewCountry">
+	<form>
+		<div class="form-group">
+			<label>Team</label>
+			<input type="text" name="" #team>
+		</div>
+		<div class="form-group">
+			<label>Sports</label>
+			<input type="text" name="" #sports>
+		</div>
+		<div class="form-group">
+			<label>Color</label>
+			<input type="text" name="" #color>
+		</div>
+		<div class="form-group">
+			<label>City</label>
+			<input type="text" name="" #city>
+		</div>
+		<input type="button" class="btn btn-md pull-right" name="" value="Add" (click)="addCountry(team.value, sports.value, color.value, city.value)">
+		<input type="button" class="btn btn-md pull-right" name="" value="Cancel" (click)="close()">
+		<div class="clearfix"></div>
+	</form>
+</div>

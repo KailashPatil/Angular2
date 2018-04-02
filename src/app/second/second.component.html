@@ -1,0 +1,111 @@
+<h2>Second page</h2>
+<p>Here is the second page works!</p>
+<br><br>
+<h4>Tab functionality</h4>
+
+<!-- ==================
+            TAB 1
+     ================== -->
+
+<div class="well">
+	<ul class="nav nav-tabs">
+    <li (click)="onClickTab1()" [class.active]="isTab1Show == true"><a>Tab1</a></li>
+    <li (click)="onClickTab2()" [class.active]="isTab2Show == true"><a>Tab2</a></li>
+  </ul>
+
+	<div class="tab-content" style="margin:30px;">
+		<div *ngIf="isTab1Show">
+			<p>TAB 1 - second-tab1 works!</p>
+		</div>
+		<div *ngIf="isTab2Show">
+			<p>TAB 2 - second-tab2 works!</p>
+		</div>
+	</div>
+</div>
+
+<br><br>
+
+<!-- ==================
+            TAB 2
+     ================== -->
+
+<div class="well">
+	<ul class="nav nav-tabs">
+    <li (click)="onClickTabX()" [class.active]="isTabXShow == true"><a>Tab X</a></li>
+    <li (click)="onClickTabY()" [class.active]="isTabYShow == true"><a>Tab Y</a></li>
+  </ul>
+
+	<div class="tab-content" style="margin:30px;">
+		<second-tab1 *ngIf="isTabXShow"></second-tab1>
+		<second-tab2 *ngIf="isTabYShow"></second-tab2>
+	</div>
+</div>
+
+<br><br>
+
+<!-- ==================
+            TAB 3
+     ================== -->
+
+<!-- For more details, check - https://github.com/ng2-ui/tab -->
+
+<div class="well">
+	<ngui-tab
+	  selected="c1"
+	  selected-index-class="active"
+	  selected-contents-class="fadeIn animated">
+	  <ul class="nav nav-tabs">
+	    <li index="c1"><a>Content 1</a></li>
+	    <li index="c2"><a>Content 2</a></li>
+	    <li index="c3"><a>Content 3</a></li>
+	    <li index="c4"><a>Content 4</a></li>
+	  </ul>
+	  <div class="tab-content" style="margin:30px;">
+	    <div contents="c1">
+	    	Content 1 goes here !! <br><br>
+	    	<second-tab1></second-tab1>
+	    </div>
+	    <div contents="c2">
+	    	Content 2 goes here !! <br><br>
+	    	<second-tab2></second-tab2>
+	    </div>
+	    <div contents="c3">
+	    	Content 3 goes here !! <br><br>
+	    	<second-tab1></second-tab1>
+	    </div>
+	    <div contents="c4">
+	    	Content 4 goes here !! <br><br>
+	    	<second-tab2></second-tab2>
+	    </div>
+	  </div>
+	</ngui-tab>
+</div>
+
+<br><br>
+
+
+<!-- ==========================================
+            TAB 4 - tabs with Loop
+     ========================================== -->
+
+<div class="well">
+	<ul class="nav nav-tabs tabs">
+		<li *ngFor="let tab of tabs" (click)="onSelect(tab)" [class.active]="selectedTab == tab">
+			<a>{{tab.title}}</a>
+		</li>
+	</ul>
+	<div class="tab-content" style="margin:30px;">
+		<div class="tabC active">
+			<second-tab1></second-tab1>
+		</div>
+		<div class="tabC">
+			<second-tab2></second-tab2>
+		</div>
+		<div class="tabC">
+			<second-tab1></second-tab1>
+		</div>
+		<div class="tabC">
+			<second-tab2></second-tab2>
+		</div>
+	</div>
+</div>
